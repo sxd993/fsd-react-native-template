@@ -1,50 +1,58 @@
-# Welcome to your Expo app 👋
+# React Native + Expo + NativeWind + FSD Template
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This repo is a starter template that combines Expo Router, React Native, NativeWind (Tailwind for RN), and the Feature-Sliced Design (FSD) folder layout. It comes preconfigured with absolute path imports and TypeScript.
 
-## Get started
+## Features
+
+- Expo Router with file-based navigation
+- FSD-inspired structure (`src/app`, `src/entities`, `src/features`, `src/pages`, `src/shared`, `src/widgets`)
+- NativeWind + Tailwind CSS setup for styling
+- Absolute imports via `@`, `@app`, `@entities`, `@features`, `@pages`, `@shared`, `@widgets`
+- TypeScript, ESLint (Expo config) included
+
+## Getting Started
 
 1. Install dependencies
-
    ```bash
    npm install
    ```
-
-2. Start the app
-
+2. Run the app (choose your target)
    ```bash
    npx expo start
+   # or
+   npm run android
+   npm run ios
+   npm run web
    ```
 
-In the output, you'll find options to open the app in a
+## Project Structure
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+src/
+  app/        # screens and routes (Expo Router)
+  entities/   # business entities and models
+  features/   # user-facing features (logic + UI)
+  pages/      # page-level compositions
+  shared/     # ui, lib, api, config, assets
+  widgets/    # reusable UI blocks
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Absolute Imports
 
-## Learn more
+Path aliases are set in `tsconfig.json` and `babel.config.js`. Import using:
+```ts
+import { SomeWidget } from "@widgets/SomeWidget";
+import { api } from "@shared/api";
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Scripts
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- `npm run start` / `npx expo start` – start dev server
+- `npm run android` / `npm run ios` / `npm run web` – platform targets
+- `npm run lint` – run ESLint
+- `npm run reset-project` – reset starter code to a blank app
 
-## Join the community
+## Notes
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Tailwind entry is configured via `global.css` and `nativewind`.
+- Metro and Babel are already wired for NativeWind and absolute paths.
